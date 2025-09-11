@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketCEO Standalone Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #1a2332;
+        }
+
+        .brochure {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a2332;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #ff6b47;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,71,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .logo {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo .orange {
+            color: #ff6b47;
+        }
+
+        .standalone-badge {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(255,107,71,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            color: #ff6b47;
+        }
+
+        .header .intro {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            color: #e0e0e0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            color: #ff6b47;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .service-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,107,71,0.4);
+        }
+
+        .service-section {
+            padding: 30px;
+            border-bottom: 1px solid #2c3e50;
+            background: #1a2332;
+        }
+
+        .service-section:nth-child(even) {
+            background: #1e2835;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ff6b47;
+        }
+
+        .service-icon {
+            font-size: 2.5em;
+            margin-right: 20px;
+            min-width: 80px;
+            text-align: center;
+            color: #ff6b47;
+        }
+
+        .service-title h2 {
+            font-size: 1.8em;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .service-title .tagline {
+            font-size: 1.1em;
+            color: #ff6b47;
+            font-style: italic;
+        }
+
+        .content-block {
+            background: rgba(255,107,71,0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b47;
+            margin-bottom: 20px;
+        }
+
+        .content-block p {
+            color: #e0e0e0;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255,107,71,0.3);
+        }
+
+        .stat-number {
+            font-size: 1.6em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.05em;
+            font-weight: bold;
+            margin-top: 15px;
+            border-left: 4px solid #ff6b47;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            background: #1e2835;
+            padding: 20px;
+            text-align: center;
+            color: #a0a0a0;
+            border-top: 1px solid #2c3e50;
+        }
+
+        .contact-info .brand {
+            color: #ff6b47;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-bottom: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Pocket<span class="orange">CEO</span></div>
+            <div class="standalone-badge">Standalone Services</div>
+            <h1>Risk-Free Revenue</h1>
+            <div class="subtitle">Performance-Based Services That Pay for Themselves</div>
+            <div class="intro">
+                <strong>Want immediate results with zero upfront investment?</strong>
+                <br><br>
+                Our standalone services let you experience PocketCEO's AI capabilities while generating instant ROI. Pay only for actual results - confirmed appointments and profitable ad performance.
+                <br><br>
+                <strong>Perfect for:</strong> Testing our capabilities, reactivating dead leads, scaling with Google Ads, or adding performance-based revenue streams to your existing plan.
+                <br><br>
+                <a href="https://www.gopocketceo.com/" class="cta-button" style="margin-top: 20px;">Get Started Today</a>
+            </div>
+        </div>
+
+        <!-- What You Get Preview -->
+        <div style="background: linear-gradient(135deg, #2c3e50, #1a2332); padding: 40px; border-top: 3px solid #ff6b47; border-bottom: 3px solid #ff6b47;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="font-size: 2.2em; color: #ffffff; margin-bottom: 15px; font-weight: bold;">Standalone Performance Services</h2>
+                <p style="font-size: 1.2em; color: #ff6b47; font-weight: 500; margin-bottom: 10px;">Zero Risk, Performance-Based Pricing</p>
+                <p style="font-size: 1.05em; color: #e0e0e0;">Two powerful services that generate immediate ROI with zero upfront costs</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin: 30px 0;">
+                <a href="#cold-leads" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">💬</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Turn Dead Leads Into Revenue</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">AI-powered SMS conversations that reactivate cold leads and book them into confirmed appointments - only pay when they show up</div>
+                    </div>
+                </a>
+                
+                <a href="#google-ads" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">🎯</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Scale With Profitable Google Ads</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">AI-driven campaigns across Google's entire network with smart targeting and automated optimization - only pay commission on profitable campaigns</div>
+                    </div>
+                </a>
+            </div>
+
+            <div style="background: rgba(56, 161, 105, 0.1); border: 1px solid #38a169; border-radius: 12px; padding: 25px; text-align: center;">
+                <div style="font-size: 1.4em; color: #38a169; font-weight: bold; margin-bottom: 10px;">100% Performance-Based</div>
+                <div style="font-size: 1.1em; color: #e0e0e0;">No upfront costs, no monthly fees, no risk. You only pay when we deliver measurable results.</div>
+            </div>
+        </div>
+
+        <!-- Service 1: Cold Lead Reactivation -->
+        <div class="service-section" id="cold-leads">
+            <div style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 10px; padding: 25px; margin: 0 0 30px 0; text-align: center;">
+                <h3 style="color: #ff6b47; font-size: 1.4em; margin-bottom: 15px; font-weight: bold;">Zero Risk Investment</h3>
+                <div style="font-size: 1.6em; font-weight: bold; color: #ffffff; margin-bottom: 10px;">$190 per confirmed appointment</div>
+                <div style="color: #c0c0c0; font-size: 1em;">($140 with monthly plan) | Only pay for leads that actually show up for appointments</div>
+            </div>
+
+            <div class="service-header">
+                <div class="service-icon">💬</div>
+                <div class="service-title">
+                    <h2>Turn Dead Leads Into Revenue</h2>
+                    <div class="tagline">Cold Lead Reactivation</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Your CRM contains a goldmine of dead leads you already paid to acquire through marketing, ads, or referrals. Most businesses write these off as lost investments, but studies show 25% of "dead" leads are still interested when properly re-engaged.</p>
+                <p>We deploy conversational AI that reaches out via SMS with natural, human-like conversations. Our AI doesn't sound robotic - it engages leads as if it's part of your team, qualifying their interest and booking appointments directly into your calendar.</p>
+            </div>
+
+            <div style="background: rgba(44, 62, 80, 0.3); border-radius: 8px; padding: 25px; margin: 20px 0;">
+                <h4 style="color: #ff6b47; margin-bottom: 20px; font-size: 1.2em; text-align: center;">How Cold Lead Reactivation Works</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">1</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Upload Your Data</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">Send us a CSV of cold leads with names and phone numbers</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">2</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">AI Training</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">We train the AI on your business, services, and brand voice</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">3</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">SMS Outreach</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">AI initiates natural conversations via SMS</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">4</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Lead Qualification</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">AI qualifies interest through conversation</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">5</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Appointment Booking</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">AI books appointments directly into your calendar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">25%</span>
+                    of "dead" leads still interested
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5x</span>
+                    cheaper than new lead acquisition
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Zero</span>
+                    upfront investment required
+                </div>
+            </div>
+
+            <div class="result-box">
+                Hidden revenue unlocked from leads you already own with zero risk and maximum ROI on past marketing investments.
+            </div>
+        </div>
+
+        <!-- Service 2: Google Ads Management -->
+        <div class="service-section" id="google-ads">
+            <div class="service-header">
+                <div class="service-icon">🎯</div>
+                <div class="service-title">
+                    <h2>Scale With Profitable Google Ads</h2>
+                    <div class="tagline">AI-Driven Campaign Management</div>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 10px; padding: 25px; margin: 0 0 20px 0; text-align: center;">
+                <h3 style="color: #ff6b47; font-size: 1.4em; margin-bottom: 15px; font-weight: bold;">Success-Aligned Investment</h3>
+                <div style="font-size: 1.6em; font-weight: bold; color: #ffffff; margin-bottom: 10px;">12-15% commission on ad spend</div>
+                <div style="color: #c0c0c0; font-size: 1em;">Only on profitable campaigns | No setup fees or monthly retainers</div>
+            </div>
+            
+            <div class="content-block">
+                <p>Google Ads can be incredibly profitable, but most businesses struggle with targeting, bidding, and optimization. Poor campaign management leads to wasted ad spend, low-quality leads, and disappointing ROI. You need expertise and constant optimization to compete effectively.</p>
+                <p>We manage your Google Ads campaigns across Search, Display, YouTube, Gmail, and Discovery networks using AI-driven targeting and automated bid optimization. Our campaigns focus on ready-to-buy customers with proven audience segmentation and A/B testing.</p>
+            </div>
+
+            <div style="background: rgba(44, 62, 80, 0.3); border-radius: 8px; padding: 25px; margin: 20px 0;">
+                <h4 style="color: #ff6b47; margin-bottom: 20px; font-size: 1.2em; text-align: center;">How Google Ads Management Works</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">1</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Strategy Development</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">We analyze your business and create targeting strategy</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">2</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Campaign Setup</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">AI-driven campaigns across all Google platforms</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">3</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Audience Targeting</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">Interest, behavior, and lookalike audience segmentation</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">4</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Creative Testing</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">A/B testing ads and landing page optimization</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">5</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">AI Optimization</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">Automated bid management and performance optimization</div>
+                    </div>
+                    <div style="background: rgba(255,107,71,0.1); padding: 15px; border-radius: 8px; text-align: center;">
+                        <div style="background: #ff6b47; color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto; font-weight: bold;">6</div>
+                        <div style="color: #ff6b47; font-weight: bold; margin-bottom: 5px;">Performance Tracking</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em;">You only pay commission on successful campaigns</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">Multi-Platform</span>
+                    campaigns across Google network
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">AI-Powered</span>
+                    targeting and optimization
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Performance</span>
+                    based pricing alignment
+                </div>
+            </div>
+
+            <div class="result-box">
+                Consistent flow of ready-to-buy customers with professional campaign management and zero upfront investment.
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="final-cta">
+            <h2>Ready to Generate Risk-Free Revenue?</h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px;">Experience PocketCEO's AI Capabilities with Zero Risk</p>
+            
+            <div style="margin: 40px 0 30px 0; padding: 25px; background: rgba(255,255,255,0.15); border-radius: 15px; border: 2px solid rgba(255,255,255,0.3);">
+                <div style="font-size: 1.4em; color: #ffffff; font-weight: bold; margin-bottom: 15px;">Our 30-Day Money-Back Guarantee</div>
+                <div style="font-size: 1.1em; color: #e0e0e0;">If you're not completely satisfied with your results within the first 30 days, we'll refund your investment - no questions asked, no strings attached.</div>
+            </div>
+            
+            <a href="https://www.gopocketceo.com/contact" class="cta-button">Let's Get Started</a>
+            
+            <div style="margin-top: 25px; font-size: 1.1em; color: rgba(255,255,255,0.9);">
+                <strong>Generate revenue today. Experience our AI. Risk nothing.</strong>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <p><strong>Questions?</strong> Email us at <strong>vr@gopocketceo.com</strong></p>
+            <p style="margin-top: 10px;"><em><span class="brand">PocketCEO Standalone Services</span> • Performance-Based Revenue Generation</em></p>
+        </div>
+    </div>
+</body>
+</html>

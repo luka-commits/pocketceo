@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketCEO Pro Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #1a2332;
+        }
+
+        .brochure {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a2332;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #ff6b47;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,71,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .logo {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo .orange {
+            color: #ff6b47;
+        }
+
+        .pro-badge {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            color: #ff6b47;
+        }
+
+        .header .intro {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            color: #e0e0e0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            color: #ff6b47;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .service-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,107,71,0.4);
+        }
+
+        .service-section {
+            padding: 30px;
+            border-bottom: 1px solid #2c3e50;
+            background: #1a2332;
+        }
+
+        .service-section:nth-child(even) {
+            background: #1e2835;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ff6b47;
+        }
+
+        .service-icon {
+            font-size: 2.5em;
+            margin-right: 20px;
+            min-width: 80px;
+            text-align: center;
+            color: #ff6b47;
+        }
+
+        .service-title h2 {
+            font-size: 1.8em;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .service-title .tagline {
+            font-size: 1.1em;
+            color: #ff6b47;
+            font-style: italic;
+        }
+
+        .content-block {
+            background: rgba(255,107,71,0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b47;
+            margin-bottom: 20px;
+        }
+
+        .content-block p {
+            color: #e0e0e0;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255,107,71,0.3);
+        }
+
+        .stat-number {
+            font-size: 1.6em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.05em;
+            font-weight: bold;
+            margin-top: 15px;
+            border-left: 4px solid #ff6b47;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            background: #1e2835;
+            padding: 20px;
+            text-align: center;
+            color: #a0a0a0;
+            border-top: 1px solid #2c3e50;
+        }
+
+        .contact-info .brand {
+            color: #ff6b47;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-bottom: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Pocket<span class="orange">CEO</span></div>
+            <div class="pro-badge">Pro</div>
+            <h1>Scale Your Success</h1>
+            <div class="subtitle">Advanced Automation for Growing Businesses</div>
+            <div class="intro">
+                <strong>Ready to break through your growth ceiling?</strong> 
+                Most successful businesses hit the same wall: their basic systems worked when they were small, but now complexity is killing their efficiency.
+                <br><br>
+                <strong>The PocketCEO Pro Plan solves the scaling problem.</strong>
+                <br><br>
+                While other businesses struggle with growing pains, Pro clients systematically scale their operations with advanced AI, multi-rep workflows, and enterprise-level automation.
+                <br><br>
+                <strong>Perfect for:</strong> Growing businesses, multi-person teams, established companies ready for advanced automation and data-driven growth.
+                <br><br>
+                <a href="https://www.gopocketceo.com/" class="cta-button" style="margin-top: 20px;">Get Started Today</a>
+            </div>
+        </div>
+
+        <!-- What You Get Preview -->
+        <div style="background: linear-gradient(135deg, #2c3e50, #1a2332); padding: 40px; border-top: 3px solid #ff6b47; border-bottom: 3px solid #ff6b47;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="font-size: 2.2em; color: #ffffff; margin-bottom: 15px; font-weight: bold;">The PocketCEO Pro Plan</h2>
+                <p style="font-size: 1.2em; color: #ff6b47; font-weight: 500; margin-bottom: 10px;">Everything in Essential PLUS 8 Advanced Growth Features</p>
+                <p style="font-size: 1.05em; color: #e0e0e0;">Complete automation system for systematic scaling and growth</p>
+            </div>
+
+            <!-- Essential Features Summary -->
+            <div style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 25px; margin-bottom: 30px;">
+                <h3 style="color: #ff6b47; font-size: 1.3em; margin-bottom: 15px; font-weight: bold;">Foundation: All Essential Plan Features</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin-bottom: 20px;">
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Professional conversion website</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Complete CRM and messaging system</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Automated lead capture and nurturing</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Speed-to-lead workflows</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Multi-channel messaging automation</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Appointment booking system</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Payment integration</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Visual sales pipeline</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Centralized customer database</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Mobile app access</div>
+                    <div style="color: #c0c0c0; font-size: 0.95em; padding: 5px 0;">✓ Live chat widget</div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin: 30px 0;">
+                <a href="#sales-funnels" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">🚀</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Turn Traffic Into Pre-Qualified Prospects</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Dedicated conversion funnels with educational journeys, social proof integration, and strategic CTAs that turn casual visitors into pre-qualified prospects ready to buy</div>
+                    </div>
+                </a>
+                
+                <a href="#ai-agent" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">🤖</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Never Miss A Lead Again</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Custom AI conversation agent trained on YOUR specific knowledge base that understands your industry, pricing, and processes to handle complex questions like your best sales rep</div>
+                    </div>
+                </a>
+                
+                <a href="#speed-plus" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">⚡</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Scale Your Team Without Chaos</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Intelligent lead distribution across your entire team with round-robin assignment, automatic escalation, and smart routing based on availability, expertise, or territory</div>
+                    </div>
+                </a>
+                
+                <a href="#reputation" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">⭐</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Build Unstoppable Social Proof</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Complete reputation management system with automated review requests, multi-platform optimization, crisis management protocols, and response automation to build consistent 4.5+ star ratings</div>
+                    </div>
+                </a>
+                
+                <a href="#advanced-payments" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">💳</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Get Paid Faster, Every Time</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Smart invoicing, payment plans, automated collections, and real-time cash flow visibility that integrates with your accounting software to get you paid faster with less admin work</div>
+                    </div>
+                </a>
+                
+                <a href="#seo" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">🔍</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Dominate Your Local Market</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Complete SEO strategy with technical optimization, content strategy, local SEO domination, and competitive analysis that gets you found by prospects actively searching for your services</div>
+                    </div>
+                </a>
+                
+                <a href="#analytics" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">📊</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Make Every Decision Data-Driven</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Comprehensive analytics dashboard with lead source intelligence, conversion tracking, team performance monitoring, and predictive insights that show exactly where improvements will have biggest impact</div>
+                    </div>
+                </a>
+                
+                <a href="#priority-support" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">🎯</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Get Expert Growth Guidance</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Same-day response times, monthly strategy sessions, quarterly business audits, and direct access to automation experts who become strategic partners invested in your growth success</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Service 1: Sales Funnels -->
+        <div class="service-section" id="sales-funnels">
+            <div class="service-header">
+                <div class="service-icon">🚀</div>
+                <div class="service-title">
+                    <h2>Turn Traffic Into Pre-Qualified Prospects</h2>
+                    <div class="tagline">High-Conversion Sales Funnels</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Most website visitors aren't ready to buy. They need education first, but typical websites just capture contact info and leave prospects confused about next steps.</p>
+                <p>We build dedicated conversion funnels that educate prospects before they contact you. These psychological conversion machines use educational journeys, social proof, and strategic calls to action that turn casual visitors into pre-qualified prospects ready to buy.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">300-400%</span>
+                    Higher conversion rates vs standard websites
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5x</span>
+                    More qualified leads ready to buy
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">40-60%</span>
+                    Shorter sales cycles
+                </div>
+            </div>
+
+            <div class="result-box">
+                Every prospect who books is pre-educated and ready to say yes
+            </div>
+        </div>
+
+        <!-- Service 2: AI Agent -->
+        <div class="service-section" id="ai-agent">
+            <div class="service-header">
+                <div class="service-icon">🤖</div>
+                <div class="service-title">
+                    <h2>Never Miss A Lead Again</h2>
+                    <div class="tagline">AI Conversation Agent</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Generic chatbots kill conversions because prospects can tell they're talking to a robot with canned responses that don't understand your specific business.</p>
+                <p>We build a custom AI conversation agent trained on YOUR knowledge base. It understands your industry, pricing, and processes, then has genuine conversations that sound like your best sales rep handling complex questions 24/7.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">4-6x</span>
+                    Better conversion than generic chatbots
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    Availability without sick days
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Instant</span>
+                    Responses build trust
+                </div>
+            </div>
+
+            <div class="result-box">
+                It's like having your best salesperson available 24/7, multiplied infinitely
+            </div>
+        </div>
+
+        <!-- Service 3: Speed-to-Lead PLUS -->
+        <div class="service-section" id="speed-plus">
+            <div class="service-header">
+                <div class="service-icon">⚡</div>
+                <div class="service-title">
+                    <h2>Scale Your Team Without Chaos</h2>
+                    <div class="tagline">Speed-to-Lead PLUS</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Basic speed to lead works for single owners, but with multiple team members, manual assignment creates delays and bottlenecks. Growth becomes chaotic instead of systematic.</p>
+                <p>Intelligent lead distribution across your entire team based on availability, expertise, or territory. Round-robin assignment with automatic escalation ensures every lead gets instant response while preventing the bottlenecks that kill momentum.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">Team-wide</span>
+                    Response optimization
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Intelligent</span>
+                    Distribution prevents bottlenecks
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Systematic</span>
+                    Scaling process
+                </div>
+            </div>
+
+            <div class="result-box">
+                Your entire team responds at light speed with fair distribution
+            </div>
+        </div>
+
+        <!-- Service 4: Reputation Management -->
+        <div class="service-section" id="reputation">
+            <div class="service-header">
+                <div class="service-icon">⭐</div>
+                <div class="service-title">
+                    <h2>Build Unstoppable Social Proof</h2>
+                    <div class="tagline">Full Reputation Management</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>90% of consumers read reviews before buying. Your competitors with more reviews get chosen even when you're better, while manual review requests are forgotten or inconsistent.</p>
+                <p>Systematic reputation building with automated review generation, multi-platform optimization, and reputation protection. Automated review requests, crisis management protocols, and response automation consistently build 4.5+ star ratings.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">4.5+</span>
+                    Star ratings consistently
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Real-time</span>
+                    Monitoring across platforms
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Automated</span>
+                    Review generation
+                </div>
+            </div>
+
+            <div class="result-box">
+                Prospects choose you over competitors every time with unstoppable social proof
+            </div>
+        </div>
+
+        <!-- Service 5: Advanced Payments -->
+        <div class="service-section" id="advanced-payments">
+            <div class="service-header">
+                <div class="service-icon">💳</div>
+                <div class="service-title">
+                    <h2>Get Paid Faster, Every Time</h2>
+                    <div class="tagline">Advanced Payment & Invoicing</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Basic payment processing works for small businesses, but growing companies need sophisticated financial automation. Manual invoicing becomes overwhelming while cash flow stays unpredictable.</p>
+                <p>Complete financial automation with smart invoicing, payment plans, automated collections, and real-time cash flow visibility. Professional payment processing integrates with your accounting software to get you paid faster with zero admin chasing.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">2x</span>
+                    Faster payment collection
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Hours</span>
+                    Saved weekly on admin
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Real-time</span>
+                    Cash flow visibility
+                </div>
+            </div>
+
+            <div class="result-box">
+                Professional financial operations that run themselves with complete visibility
+            </div>
+        </div>
+
+        <!-- Service 6: SEO -->
+        <div class="service-section" id="seo">
+            <div class="service-header">
+                <div class="service-icon">🔍</div>
+                <div class="service-title">
+                    <h2>Dominate Your Local Market</h2>
+                    <div class="tagline">SEO Optimization</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Paid ads get expensive as you scale while referrals plateau. You need consistent organic lead flow, but SEO feels impossible with all the technical requirements and constant changes.</p>
+                <p>Complete SEO strategy gets you found by prospects actively searching for your services. Technical optimization, content strategy, local SEO domination, and competitive analysis identify opportunities your competitors miss.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">Organic</span>
+                    Lead flow reduces ad costs
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Search</span>
+                    Visibility drives traffic
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Competitive</span>
+                    Intelligence advantage
+                </div>
+            </div>
+
+            <div class="result-box">
+                Better online visibility that helps qualified prospects find your business
+            </div>
+        </div>
+
+        <!-- Service 7: Analytics -->
+        <div class="service-section" id="analytics">
+            <div class="service-header">
+                <div class="service-icon">📊</div>
+                <div class="service-title">
+                    <h2>Make Every Decision Data-Driven</h2>
+                    <div class="tagline">Real-Time Analytics</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Growing businesses fly blind without data. You know leads are coming in and some convert, but you can't identify which marketing works best or where bottlenecks slow your process.</p>
+                <p>Comprehensive analytics dashboard shows exactly how your business performs and where improvements will have biggest impact. Lead source intelligence, conversion tracking, team performance monitoring, and predictive intelligence replace guesswork with data.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">Real-time</span>
+                    Performance monitoring
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Predictive</span>
+                    Lead scoring and forecasting
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Data-driven</span>
+                    Decision making
+                </div>
+            </div>
+
+            <div class="result-box">
+                Every business decision backed by data with continuous optimization
+            </div>
+        </div>
+
+        <!-- Service 8: Priority Support -->
+        <div class="service-section" id="priority-support">
+            <div class="service-header">
+                <div class="service-icon">🎯</div>
+                <div class="service-title">
+                    <h2>Get Expert Growth Guidance</h2>
+                    <div class="tagline">Priority Support</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Growing businesses face complex challenges that basic support can't solve. You need strategic guidance from experts who understand both automation technology and business growth.</p>
+                <p>Direct access to PocketCEO automation experts who become strategic partners in your growth. Same-day response times, monthly strategy sessions, quarterly business audits, and custom automation solutions solve your unique scaling challenges.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">24-hour</span>
+                    Response guarantee
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Strategic</span>
+                    Partnership with experts
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Proactive</span>
+                    Growth guidance
+                </div>
+            </div>
+
+            <div class="result-box">
+                Strategic partnership with automation experts invested in your success
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="final-cta">
+            <h2>Ready to Scale Beyond Your Current Limits?</h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px;">Transform Complex Growth Challenges Into Systematic Success</p>
+            
+            <div style="margin: 40px 0 30px 0; padding: 25px; background: rgba(255,255,255,0.15); border-radius: 15px; border: 2px solid rgba(255,255,255,0.3);">
+                <div style="font-size: 1.4em; color: #ffffff; font-weight: bold; margin-bottom: 15px;">Our 30-Day Money-Back Guarantee</div>
+                <div style="font-size: 1.1em; color: #e0e0e0;">If you're not completely satisfied with your PocketCEO Pro system within the first 30 days, we'll refund your money - no questions asked, no strings attached. You can also cancel anytime with just 1 month notice.</div>
+            </div>
+            
+            <a href="https://www.gopocketceo.com/" class="cta-button">Let's Get Started</a>
+            
+            <div style="margin-top: 25px; font-size: 1.1em; color: rgba(255,255,255,0.9);">
+                <strong>Scale systematically. Grow intelligently. Dominate your market.</strong>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <p><strong>Questions?</strong> Email us at <strong>vr@gopocketceo.com</strong></p>
+            <p style="margin-top: 10px;"><em><span class="brand">PocketCEO Pro</span> • Scale Your Success. Automate Your Growth.</em></p>
+        </div>
+    </div>
+</body>
+</html

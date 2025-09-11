@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketCEO Essential Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #1a2332;
+        }
+
+        .brochure {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a2332;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #ff6b47;
+        }
+
+        .logo {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .logo .orange {
+            color: #ff6b47;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.4em;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #ff6b47;
+        }
+
+        .header .intro {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #e0e0e0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            color: #ff6b47;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 20px 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .service-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,107,71,0.4);
+        }
+
+        .service-section {
+            padding: 30px;
+            border-bottom: 1px solid #2c3e50;
+            background: #1a2332;
+        }
+
+        .service-section:nth-child(even) {
+            background: #1e2835;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ff6b47;
+        }
+
+        .service-icon {
+            font-size: 2.5em;
+            margin-right: 20px;
+            min-width: 80px;
+            text-align: center;
+            color: #ff6b47;
+        }
+
+        .service-title h2 {
+            font-size: 1.8em;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .service-title .tagline {
+            font-size: 1.1em;
+            color: #ff6b47;
+            font-style: italic;
+        }
+
+        .content-block {
+            background: rgba(255,107,71,0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b47;
+            margin-bottom: 20px;
+        }
+
+        .content-block p {
+            color: #e0e0e0;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255,107,71,0.3);
+        }
+
+        .stat-number {
+            font-size: 1.6em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.05em;
+            font-weight: bold;
+            margin-top: 15px;
+            border-left: 4px solid #ff6b47;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #ff6b47, #e55039);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            background: #1e2835;
+            padding: 20px;
+            text-align: center;
+            color: #a0a0a0;
+            border-top: 1px solid #2c3e50;
+        }
+
+        .contact-info .brand {
+            color: #ff6b47;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .service-icon {
+                margin-bottom: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="brochure">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">Pocket<span class="orange">CEO</span></div>
+            <h1>Essential Plan</h1>
+            <div class="subtitle">Stop Chasing Leads. Start Converting Them.</div>
+            <div class="intro">
+                <strong>Automate 80% of Your Business Operations</strong>
+                <br><br>
+                The Essential Plan is our comprehensive automation infrastructure designed for agents, small businesses, and entrepreneurs who want to stop babysitting software and start focusing on growth.
+                <br><br>
+                We build you a complete system that handles lead capture, follow-up, booking, payments, and customer management automatically - so your business runs smarter while you focus on what matters: closing deals and serving clients.
+                <br><br>
+                <strong>Perfect for:</strong> Real estate agents, contractors, consultants, service providers, and local businesses ready to scale without hiring more staff.
+                <br><br>
+                <a href="https://www.gopocketceo.com/" class="cta-button" style="margin-top: 20px;">Get Started Today</a>
+            </div>
+        </div>
+
+        <!-- What You Get Preview -->
+        <div style="background: linear-gradient(135deg, #2c3e50, #1a2332); padding: 40px; border-top: 3px solid #ff6b47; border-bottom: 3px solid #ff6b47;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="font-size: 2.2em; color: #ffffff; margin-bottom: 15px; font-weight: bold;">How It All Works Together</h2>
+                <p style="font-size: 1.2em; color: #ff6b47; font-weight: 500; margin-bottom: 10px;">6 Connected Systems That Run Your Business</p>
+                <p style="font-size: 1.05em; color: #e0e0e0;">From first website visit to final payment - completely automated</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin: 30px 0;">
+                <a href="#website" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">🌐</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">24/7 Lead Generation Engine</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Professional website with smart lead capture forms and conversion-focused design that turns visitors into paying clients while you sleep</div>
+                    </div>
+                </a>
+                
+                <a href="#crm" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">📱</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Every Lead in One Command Center</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Complete CRM with unified inbox for all texts, emails, calls, social messages plus centralized database to track every interaction</div>
+                    </div>
+                </a>
+                
+                <a href="#automation" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">⚡</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Be First. Win More Deals.</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Speed-to-lead workflows with instant auto-replies, multi-channel messaging automation, and smart follow-up sequences that never let leads go cold</div>
+                    </div>
+                </a>
+                
+                <a href="#booking" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">📅</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Fill Your Calendar, Get Paid Faster</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Automated appointment booking system with seamless payment integration for invoices, services, and products so clients can book and pay instantly</div>
+                    </div>
+                </a>
+                
+                <a href="#pipeline" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">📊</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">See Every Opportunity Clearly</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Visual sales pipeline with mobile lead management app so you can track progress, respond instantly, and never miss an opportunity anywhere you go</div>
+                    </div>
+                </a>
+                
+                <a href="#chat" style="text-decoration: none;">
+                    <div class="service-card" style="background: rgba(255,107,71,0.1); border: 1px solid #ff6b47; border-radius: 12px; padding: 20px; height: 220px; display: flex; flex-direction: column;">
+                        <div style="color: #ff6b47; font-size: 1.8em; margin-bottom: 12px;">💬</div>
+                        <div style="color: #ffffff; font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">Convert Browsers Into Conversations</div>
+                        <div style="color: #c0c0c0; font-size: 0.9em; line-height: 1.4;">Live chat widget captures curious visitors and turns them into qualified prospects instantly while feeding all data into your centralized database</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Service 1 - Website -->
+        <div class="service-section" id="website">
+            <div class="service-header">
+                <div class="service-icon">🌐</div>
+                <div class="service-title">
+                    <h2>Professional Website That Converts</h2>
+                    <div class="tagline">Your 24/7 Sales Engine</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Visitors judge your business in under 5 seconds, and 63% are browsing on mobile. If your site isn't professional and fast, you lose them instantly.</p>
+                <p>We build you a modern, mobile-optimized website designed around one goal: turning visitors into leads. Every page follows a proven conversion path with compelling messaging, trust signals, and strategic calls-to-action that guide prospects toward booking.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">75%</span>
+                    judge credibility by website design
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2-3x</span>
+                    more leads with conversion-focused design
+                </div>
+            </div>
+
+            <div class="result-box">
+                Professional website that converts visitors into leads 24/7
+            </div>
+        </div>
+
+        <!-- Service 2 - CRM & Messaging -->
+        <div class="service-section" id="crm">
+            <div class="service-header">
+                <div class="service-icon">📱</div>
+                <div class="service-title">
+                    <h2>Complete CRM & Messaging Hub</h2>
+                    <div class="tagline">Every Lead in One Place</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Juggling email, text, phone calls, and social media means leads slip through the cracks. Without one central system, 79% of leads never convert due to poor follow-up.</p>
+                <p>Your CRM becomes mission control. Every conversation from every channel flows into one unified inbox. Smart pipeline tracking, instant notifications, and automated follow-ups ensure no lead ever gets forgotten.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">30%</span>
+                    higher conversion with organized CRM
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Hours</span>
+                    saved weekly on admin tasks
+                </div>
+            </div>
+
+            <div class="result-box">
+                Every lead tracked, every conversation logged, nothing falls through the cracks
+            </div>
+        </div>
+
+        <!-- Service 3 - Automation -->
+        <div class="service-section" id="automation">
+            <div class="service-header">
+                <div class="service-icon">⚡</div>
+                <div class="service-title">
+                    <h2>Smart Automation & Follow-up</h2>
+                    <div class="tagline">Be First. Win More.</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Speed wins sales. Respond within 5 minutes and you're 4x more likely to convert. Most businesses take hours or days, losing prospects to faster competitors.</p>
+                <p>Smart forms capture leads instantly while automation handles the rest: immediate auto-replies, real-time team alerts, multi-channel nurture sequences via SMS and email, and persistent follow-up until prospects respond. You're always first, always professional.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">4x</span>
+                    more likely to win with 5-minute response
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">80%</span>
+                    of sales need 5+ touchpoints to convert
+                </div>
+            </div>
+
+            <div class="result-box">
+                Lightning fast responses and consistent follow up without lifting a finger
+            </div>
+        </div>
+
+        <!-- Service 4 - Booking & Payments -->
+        <div class="service-section" id="booking">
+            <div class="service-header">
+                <div class="service-icon">📅</div>
+                <div class="service-title">
+                    <h2>Automated Booking & Payments</h2>
+                    <div class="tagline">Fill Your Calendar, Get Paid Faster</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Manual scheduling wastes hours on back-and-forth emails. No-shows cost thousands yearly. Complicated payment processes lose sales at the finish line.</p>
+                <p>Self-service booking lets clients choose their own appointments while automated reminders cut no-shows by 30%. Seamless payment integration with Stripe or PayPal means clients can pay instantly - and you get your money faster with zero chasing.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">5-10</span>
+                    hours saved weekly on scheduling
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">30%</span>
+                    fewer no-shows with automated reminders
+                </div>
+            </div>
+
+            <div class="result-box">
+                Your calendar fills itself while payments flow automatically
+            </div>
+        </div>
+
+        <!-- Service 5 - Pipeline & Mobile -->
+        <div class="service-section" id="pipeline">
+            <div class="service-header">
+                <div class="service-icon">📊</div>
+                <div class="service-title">
+                    <h2>Visual Pipeline & Mobile Access</h2>
+                    <div class="tagline">See Every Opportunity Clearly</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Without clear visibility, hot prospects disappear into chaos. Business doesn't stop when you leave your desk, but most systems do.</p>
+                <p>Visual pipeline shows exactly where each lead stands (New → Contacted → Booked → Closed). Mobile app puts your entire business in your pocket - respond instantly, track progress, and never miss an opportunity, whether you're in a meeting or on vacation.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">28%</span>
+                    revenue increase with organized pipelines
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15%</span>
+                    productivity boost with mobile CRM access
+                </div>
+            </div>
+
+            <div class="result-box">
+                Complete visibility and control, anywhere you are
+            </div>
+        </div>
+
+        <!-- Service 6 - Chat & Database -->
+        <div class="service-section" id="chat">
+            <div class="service-header">
+                <div class="service-icon">💬</div>
+                <div class="service-title">
+                    <h2>Live Chat & Centralized Database</h2>
+                    <div class="tagline">Convert Browsers Into Conversations</div>
+                </div>
+            </div>
+            
+            <div class="content-block">
+                <p>Visitors leave with unanswered questions while scattered data across multiple tools creates chaos and missed opportunities.</p>
+                <p>Live chat widget lets prospects engage instantly - 82% say immediate responses build trust. Every interaction feeds your centralized database where all client history, payments, and conversations live in one organized system.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">40%</span>
+                    more conversions with live chat
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">27%</span>
+                    better retention with unified data
+                </div>
+            </div>
+
+            <div class="result-box">
+                Instant engagement with complete client intelligence at your fingertips
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="final-cta">
+            <h2>Ready to 3x Your Lead Conversion?</h2>
+            <p style="font-size: 1.3em; margin-bottom: 30px;">Stop Losing Leads to Competitors Who Respond Faster</p>
+            
+            <div style="margin: 40px 0 30px 0; padding: 25px; background: rgba(255,255,255,0.15); border-radius: 15px; border: 2px solid rgba(255,255,255,0.3);">
+                <div style="font-size: 1.4em; color: #ffffff; font-weight: bold; margin-bottom: 15px;">Our 30-Day Money-Back Guarantee</div>
+                <div style="font-size: 1.1em; color: #e0e0e0;">If you're not completely satisfied within 30 days, we'll refund your money - no questions asked. Cancel anytime with just 1 month notice.</div>
+            </div>
+            
+            <a href="https://www.gopocketceo.com/" class="cta-button">Let's Get Started</a>
+            
+            <div style="margin-top: 25px; font-size: 1.1em; color: rgba(255,255,255,0.9);">
+                <strong>Don't let another lead slip away.</strong> Your competitors are already automating - will you be next?
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <p><strong>Questions?</strong> Email us at <strong>vr@gopocketceo.com</strong></p>
+            <p style="margin-top: 10px;"><em><span class="brand">PocketCEO</span> • Automation That Works While You Don't</em></p>
+        </div>
+    </div>
+</body>
+</html>
